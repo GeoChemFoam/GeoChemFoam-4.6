@@ -1,0 +1,3 @@
+processMaxVelocity.C
+
+EXE = $(GCFOAM_APPBIN)/processMaxVelocity

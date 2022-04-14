@@ -1,0 +1,26 @@
+'/home/user/works/GeoChemFoam-4.5/ThirdParty/PhreeqcRM/lib/libPhreeqcRM.so' is up to date.
+'/home/user/works/GeoChemFoam-4.5/lib/libreactionThermophysicalModelsGCFOAM.so' is up to date.
+'/home/user/works/GeoChemFoam-4.5/lib/libfvMotionSolverGCFOAM.so' is up to date.
+'/home/user/works/GeoChemFoam-4.5/lib/libfiniteVolumeGCFOAM.so' is up to date.
+'/home/user/works/GeoChemFoam-4.5/lib/libmeshToolsGCFOAM.so' is up to date.
+'/home/user/works/GeoChemFoam-4.5/lib/libinterfacePropertiesGCFOAM.so' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/multiSpeciesTransportFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/reactiveTransportFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/dissolTransportDyMFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/interGCFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/interOSFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/interTransportFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/interTransferFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/interReactiveTransportFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/interReactiveTransferFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/simpleDBSFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/heatTransportSimpleFoam' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processPoroPerm' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processConcentration' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processSaturation' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processMaxVelocity' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processPhaseConcentration' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processInterfaceTransfer' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processMeshCellCenters' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/processHeatTransfer' is up to date.
+make: '/home/user/works/GeoChemFoam-4.5/bin/smoothSolidSurface' is up to date.

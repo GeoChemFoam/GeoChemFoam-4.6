@@ -1,0 +1,31 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermoPhysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+
+solutionSpecies
+{
+        T	
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 2e-5;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 0;
+		H H [ 0 0 0 0 0 0 0 ] 10;
+                Mw Mw [ 1 0 0 0 -1 0 0 ] 1.2;
+	}
+
+};
+
+// ************************************************************************* //

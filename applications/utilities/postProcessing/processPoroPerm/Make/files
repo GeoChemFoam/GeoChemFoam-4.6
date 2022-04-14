@@ -1,0 +1,3 @@
+processPoroPerm.C
+
+EXE = $(GCFOAM_APPBIN)/processPoroPerm

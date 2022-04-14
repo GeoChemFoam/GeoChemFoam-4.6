@@ -1,0 +1,3 @@
+processSolidArea.C
+
+EXE = $(GCFOAM_APPBIN)/processSolidArea

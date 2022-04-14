@@ -1,0 +1,38 @@
+# .bashrc
+
+# Change according to your GeoChemFoam installation directory
+GCFOAM_DIR=$HOME/works/GeoChemFoam-4.6
+GCFOAM_SRC=$GCFOAM_DIR/src
+GCFOAM_APPBIN=$GCFOAM_DIR/bin
+GCFOAM_LIBBIN=$GCFOAM_DIR/lib
+
+# Change according to your openfoam installation directory
+# export FOAM_INST_DIR=$HOME/foam
+# source $HOME/foam/foam-extend-4.0/etc/bashrc
+# export OF4X_DIR=$HOME/OpenFOAM
+export FOAM_INST_DIR=/usr/local/foam
+source /usr/local/foam/foam-extend-4.0/etc/bashrc
+export OF4X_DIR=/usr/local/OpenFOAM
+#export FOAM_INST_DIR=/opt/foam
+#source /opt/foam/foam-extend-4.0/etc/bashrc
+#export OF4X_DIR=/opt/OpenFOAM
+
+export GCFOAM_DIR
+export GCFOAM_SRC
+export GCFOAM_APPBIN
+export GCFOAM_LIBBIN
+
+
+
+export PATH=$PATH:$GCFOAM_APPBIN
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GCFOAM_LIBBIN
+export PATH=$PATH:$MPI_ARCH_PATH
+
+#Third party software
+source $GCFOAM_DIR/ThirdParty/bashrc
+
+alias dir='cd $GCFOAM_DIR'
+alias src='cd $GCFOAM_DIR/src'
+alias app='cd $GCFOAM_DIR/applications'
+alias tut='cd $GCFOAM_DIR/tutorials'
+

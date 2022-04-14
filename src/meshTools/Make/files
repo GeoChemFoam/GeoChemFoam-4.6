@@ -1,0 +1,4 @@
+sets/faceSources/collapsingFace/collapsingFace.C
+
+
+LIB = $(GCFOAM_LIBBIN)/libmeshToolsGCFOAM

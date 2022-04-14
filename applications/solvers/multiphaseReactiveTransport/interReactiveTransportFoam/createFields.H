@@ -1,0 +1,220 @@
+    Info<< "Reading field pd\n" << endl;
+    volScalarField pd
+    (
+        IOobject
+        (
+            "pd",
+            runTime.timeName(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh
+    );
+
+    Info<< "Reading field alpha1\n" << endl;
+    volScalarField alpha1
+    (
+        IOobject
+        (
+            "alpha1",
+            runTime.timeName(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh
+    );
+
+    Info<< "Create field alpha2\n" << endl;
+    volScalarField alpha2
+
+    (
+        IOobject
+        (
+            "alpha2",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        scalar(1)-alpha1
+    );
+
+    volScalarField gradalpha1
+    (
+        IOobject
+        (
+            "gradalpha1",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mag(fvc::grad(alpha1))
+    );
+
+    Info<< "Reading field U\n" << endl;
+    volVectorField U
+    (
+        IOobject
+        (
+            "U",
+            runTime.timeName(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh
+    );
+
+#   include "createPhi.H"
+
+
+    Info<< "Reading transportProperties\n" << endl;
+    twoPhaseMixture twoPhaseProperties(U, phi, "alpha1");
+
+    const dimensionedScalar& rho1 = twoPhaseProperties.rho1();
+    const dimensionedScalar& rho2 = twoPhaseProperties.rho2();
+
+
+    // Need to store rho for ddt(rho, U)
+    volScalarField rho
+    (
+        IOobject
+        (
+            "rho",
+            runTime.timeName(),
+            mesh,
+            IOobject::READ_IF_PRESENT
+        ),
+        alpha1*rho1 + (scalar(1) - alpha1)*rho2,
+        alpha1.boundaryField().types()
+    );
+    rho.oldTime();
+
+
+    // Mass flux
+    // Initialisation does not matter because rhoPhi is reset after the
+    // alpha1 solution before it is used in the U equation.
+    surfaceScalarField rhoPhi
+    (
+        IOobject
+        (
+            "rho*phi",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE
+        ),
+        rho1*phi
+    );
+
+    Info<< "Reading thermoPhysicalPropertiesProperties\n" << endl;
+
+    IOdictionary thermoPhysicalProperties
+    (
+        IOobject
+        (
+            "thermoPhysicalProperties",
+            runTime.constant(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::NO_WRITE
+        )
+    );
+
+    bool phaseTransfer = thermoPhysicalProperties.lookupOrDefault("PhaseTransfer",false);
+    if (phaseTransfer==true)
+    {
+        Info<< "phase transfer defined in constant/thermoPhysicalProperties:"
+        << "use interReactiveTransferFoam"
+        << endl
+        << abort(FatalError);
+    }
+
+	Info << "Create species mixture\n" << endl;
+    autoPtr<basicTwoPhaseMultiComponentTransportMixture> pSpeciesMixture
+    (
+        basicTwoPhaseMultiComponentTransportMixture::New(mesh, mesh, alpha1)
+    );
+    basicTwoPhaseMultiComponentTransportMixture& speciesMixture =pSpeciesMixture();
+    const speciesTable& solutionSpecies = speciesMixture.species();
+
+	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+	Info << "Reading compressive flux coefficient\n" << endl;	
+    scalar cYi(readScalar(mesh.solutionDict().subDict("PISO").lookup("cYi")));
+
+	//**************************************************************************
+
+    Info<< "Calculating field g.h\n" << endl;
+    volScalarField gh("gh", g & mesh.C());
+    surfaceScalarField ghf("gh", g & mesh.Cf());
+
+    // Construct interface from alpha1 distribution
+    interfaceProperties interface(alpha1, U, twoPhaseProperties);
+
+	const volScalarField& pc = interface.pc();
+    mesh.schemesDict().setFluxRequired(pc.name());
+
+    volScalarField p
+    (
+        IOobject
+        (
+            "p",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        pd + pc + rho*gh
+    );
+
+
+    label pdRefCell = 0;
+    scalar pdRefValue = 0.0;
+    setRefCell(pd, pimple.dict(), pdRefCell, pdRefValue);
+    mesh.schemesDict().setFluxRequired(pd.name());
+
+    scalar pRefValue = 0.0;
+
+    if (pd.needReference())
+    {
+        pRefValue = readScalar(pimple.dict().lookup("pRefValue"));
+
+        p += dimensionedScalar
+        (
+            "p",
+            p.dimensions(),
+            pRefValue - getRefCellValue(p, pdRefCell)
+        );
+    }
+
+     // Construct incompressible turbulence model
+    autoPtr<incompressible::turbulenceModel> turbulence
+    (
+        incompressible::turbulenceModel::New(U, phi, twoPhaseProperties)
+    );
+
+    //******************************************************************//
+    // scheme for phiH
+    //******************************************************************//
+
+	OStringStream buf;
+
+	const tokenList& tokens = mesh.schemesDict().divScheme("div(phiH,Yi)");
+
+	label len = tokens.size();
+
+	forAll (tokens, tok)
+	{
+        buf << mesh.schemesDict().divScheme("div(phiH,Yi)")[tok];
+
+		if (--len)
+		{
+	        buf << ' ';
+	    }
+	}
+  
+    string phiHScheme = buf.str();

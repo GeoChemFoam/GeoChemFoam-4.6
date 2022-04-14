@@ -1,0 +1,73 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermoPhysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+Phase1 phreeqcMixture;
+Phase2 inertMultiComponentMixture;
+PhaseTransfer false;
+
+solutionSpecies
+{
+	Ca+2
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 40;
+	}
+
+	Cl-
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 35;
+	}
+
+	H+
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 1;
+	}
+
+
+	OH-
+	{
+		D1 D1 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		D2 D2 [ 0 2 -1 0 0 0 0 ] 1e-9;
+		H H [ 0 0 0 0 0 0 0 ] 1e-4;
+                Mw Mw [1 0 0 0 -1 0 0] 17;
+	}
+
+
+};
+
+surfaceSpecies
+{
+	Surf_a-;
+	Surf_aCa+;
+	Surf_aH;
+};
+
+
+surfaceMasters
+{
+      Surf_a;
+}
+
+// ************************************************************************* //

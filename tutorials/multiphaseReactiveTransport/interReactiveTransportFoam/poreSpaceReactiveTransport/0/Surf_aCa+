@@ -1,0 +1,52 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      Surf_aCa+;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 -2 0 0 1 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+	walls
+    {
+        type           fixedValue;
+	value uniform 1.7843e-10;
+    }
+
+		porewalls
+    {
+        type           fixedValue;
+	value uniform 1.7843e-10;
+    }
+
+	inlet
+    {
+	type            zeroGradient;
+    }
+	
+	outlet
+    {
+        type            zeroGradient;
+    }
+
+    frontAndBack
+    {
+        type empty;
+
+    }
+}
+
+// ************************************************************************* //

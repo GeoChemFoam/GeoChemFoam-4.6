@@ -1,0 +1,30 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      transportProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+transportModel  Newtonian;
+
+nu              nu [0 2 -1 0 0 0 0] 8.2e-8;
+
+kf kf [0 -2 0 0 0 0 0] 7.2e+12;
+
+DTf DTf [0 2 -1 0 0 0 0 ] 4.47e-8;
+DTs DTs [0 2 -1 0 0 0 0 ] 3.76e-6;
+momentumSource momentumSourtce [0 1 -2 0 0 0 0] (0 0 0);
+
+
+
+
+// ************************************************************************* //

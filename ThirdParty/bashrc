@@ -1,0 +1,7 @@
+# .bashrc
+
+#PhreeqcRM
+source $GCFOAM_DIR/ThirdParty/PhreeqcRM/bashrc
+
+
+

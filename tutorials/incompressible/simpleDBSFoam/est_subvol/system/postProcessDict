@@ -1,0 +1,22 @@
+FoamFile
+{
+version     4.0;
+format      ascii;
+class       dictionary;
+location    "system";
+object      postProcessDict;
+}
+
+inletName front;
+outletName back;
+
+direction 2;
+
+x1 0;
+y1 0;
+z1 0;
+
+x2 2.3806e-4;
+y2 2.3806e-4;
+z2 2.3806e-4;
+

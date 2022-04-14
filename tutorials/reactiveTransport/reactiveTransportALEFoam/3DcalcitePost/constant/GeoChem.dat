@@ -1,0 +1,76 @@
+# PHREEQC.DAT for calculating pressure dependence of reactions, with
+#   molal volumina of aqueous species and of minerals, and
+#   critical temperatures and pressures of gases used in Peng-Robinson's EOS.
+# Details are given at the end of this file.
+
+SOLUTION_MASTER_SPECIES
+#
+#element	species	alk	gfw_formula	element_gfw
+#
+H		H+	-1.0	H		1.008
+H(0)		H2	0	H
+H(1)		H+	-1.0	0
+E		e-	0	0.0		0
+O		H2O	0	O		16.0
+O(0)		O2	0	O
+O(-2)		H2O	0	0
+Ca		Ca+2	0	Ca		40.08
+Cl		Cl-	0	Cl		35.453
+C		CO3-2	2.0	HCO3		12.0111
+C(+4)		CO3-2	2.0	HCO3
+Alkalinity	CO3-2	1.0	Ca0.5(CO3)0.5	50.05
+
+SOLUTION_SPECIES
+H+ = H+
+	-gamma	9.0	0
+
+	-dw	 9.31e-9
+e- = e-
+H2O = H2O
+Ca+2 = Ca+2
+	-gamma	5.0	0.1650
+	-dw	 0.793e-9
+	-Vm  -0.3456  -7.252  6.149  -2.479  1.239  5  1.60  -57.1  -6.12e-3  1 # ref. 1
+Cl- = Cl-
+	-gamma	3.5	  0.015
+	-gamma	3.63  0.017 # cf. pitzer.dat
+	-dw	 2.03e-9
+	-Vm  4.465  4.801  4.325  -2.847  1.748  0  -0.331  20.16  0  1 # ref. 1
+CO3-2 = CO3-2
+	-gamma	5.4	0
+	-dw	 0.955e-9
+	-Vm  5.95  0  0  -5.67  6.85  0  1.37  106  -0.0343  1 # ref. 1
+# aqueous species
+H2O = OH- + H+
+	-analytic  293.29227  0.1360833  -10576.913  -123.73158  0  -6.996455e-5
+	-gamma	3.5	0
+	-dw	 5.27e-9
+	-Vm  -9.66  28.5  80.0 -22.9 1.89 0 1.09 0 0 1 # ref. 1
+2 H2O = O2 + 4 H+ + 4 e-
+	-log_k	-86.08
+	-delta_h 134.79 kcal
+	-dw	 2.35e-9
+	-Vm  5.7889  6.3536  3.2528  -3.0417  -0.3943 # supcrt
+2 H+ + 2 e- = H2
+	-log_k	-3.15
+	-delta_h -1.759 kcal
+	-dw	 5.13e-9
+	-Vm 6.52  0.78  0.12 # supcrt
+CO3-2 + H+ = HCO3-
+	-log_k	10.329
+	-delta_h -3.561	kcal
+	-analytic	107.8871	0.03252849	-5151.79	-38.92561	563713.9
+	-gamma	5.4	0
+	-dw	 1.18e-9
+	-Vm  8.472  0  -11.5  0  1.56  0  0  146  3.16e-3  1 # ref. 1
+
+Phases
+Calcite
+    CaCO3 = CO3-2 + Ca+2
+    -log_k -8.48
+    -delta_h -2.297 kcal
+    -analytic -171.9065 -0.077993 2839.319 71.595
+    -Vm 36.9 cm3/mol # Mw (100.09 g/mol) / rho (2.71 g/cm3)
+
+
+

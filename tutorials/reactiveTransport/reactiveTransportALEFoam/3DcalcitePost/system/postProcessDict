@@ -1,0 +1,19 @@
+FoamFile
+{
+version     4.0;
+format      ascii;
+class       dictionary;
+location    "system";
+object      postProcessDict;
+}
+
+x1 -108.35e-5;
+y1 -49.8e-5;
+z1 -10e-5;
+
+x2 158.35e-5;
+y2 99.8e-5;
+z2 10e-5;
+
+direction 0;
+solidName movingWalls;

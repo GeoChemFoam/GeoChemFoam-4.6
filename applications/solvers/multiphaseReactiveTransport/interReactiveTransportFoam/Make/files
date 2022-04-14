@@ -1,0 +1,3 @@
+interReactiveTransportFoam.C
+
+EXE = $(GCFOAM_APPBIN)/interReactiveTransportFoam

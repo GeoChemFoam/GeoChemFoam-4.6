@@ -1,0 +1,26 @@
+TITLE Example 19.--Linear
+
+
+
+SOLUTION_MASTER_SPECIES
+	T T 0 1 1
+	A A 0 1 1
+
+SOLUTION_SPECIES
+T = T
+A = A
+A + T = AT
+-log_k 30
+
+SOLUTION 0 formation water
+     units   Mol/L
+     T 1e-3
+     A 1e-3
+
+SELECTED_OUTPUT
+
+END
+
+
+
+

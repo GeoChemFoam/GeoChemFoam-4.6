@@ -1,0 +1,26 @@
+TITLE Example 19.--Linear
+
+SURFACE_MASTER_SPECIES
+	Surf_a Surf_aH
+
+SURFACE_SPECIES
+	Surf_aH = Surf_aH
+	Surf_aH = Surf_a- + H+
+		-log_k -7.9
+		-mole_balance Surf_a-
+	Surf_aH + Ca+2 = Surf_aCa+ + H+
+		-log_k -5.85
+		-mole_balance Surf_aCa+
+
+SOLUTION 0 formation water
+     units   mg/L
+     Ca      361.13 
+     Cl      638.87 
+
+SELECTED_OUTPUT
+
+END
+
+
+
+

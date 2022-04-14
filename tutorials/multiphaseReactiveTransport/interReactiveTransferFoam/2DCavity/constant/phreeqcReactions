@@ -1,0 +1,11 @@
+TITLE Example 19.--Linear
+
+
+SOLUTION 0 formation water
+     units   Mol/L
+     C 1e-13
+END
+
+
+
+

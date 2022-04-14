@@ -1,0 +1,6 @@
+EXE_INC = \
+-fopenmp -DUSE_OPENMP
+
+LIB_LIBS = \
+
+

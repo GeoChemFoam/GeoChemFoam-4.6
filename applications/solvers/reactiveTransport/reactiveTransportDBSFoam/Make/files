@@ -1,0 +1,3 @@
+reactiveTransportDBSFoam.C
+
+EXE = $(GCFOAM_APPBIN)/reactiveTransportDBSFoam

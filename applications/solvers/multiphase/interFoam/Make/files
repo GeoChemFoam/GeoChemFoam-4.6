@@ -1,0 +1,3 @@
+interFoam.C
+
+EXE = $(GCFOAM_APPBIN)/interGCFoam

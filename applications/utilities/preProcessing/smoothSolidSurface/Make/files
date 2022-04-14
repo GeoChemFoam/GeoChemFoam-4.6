@@ -1,0 +1,3 @@
+smoothSolidSurface.C
+
+EXE = $(GCFOAM_APPBIN)/smoothSolidSurface

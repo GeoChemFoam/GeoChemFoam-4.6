@@ -1,0 +1,11 @@
+EXE_INC = \
+    -I$(GCFOAM_SRC)/thermophysicalModels/reactionThermo/lnInclude \
+    -I$(LIB_SRC)/thermophysicalModels/specie/lnInclude \
+    -I$(LIB_SRC)/finiteVolume/lnInclude
+
+EXE_LIBS = \
+    -L$(GCFOAM_LIBBIN) \
+    -lreactionThermophysicalModelsGCFOAM \
+    -lspecie \
+    -lfiniteVolume \
+    -llduSolvers

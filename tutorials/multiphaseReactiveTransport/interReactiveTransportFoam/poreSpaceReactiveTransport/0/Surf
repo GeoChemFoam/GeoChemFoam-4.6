@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      Surf;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 -2 0 0 1 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+	walls
+    {
+        type          reactingWall;
+        surfaceMasters
+        {
+            Surf_a
+            {
+	        density 2.4e-9;
+            };
+        };
+        value uniform 2.4e-9;
+    }
+
+		porewalls
+    {
+        type          reactingWall;
+        surfaceMasters
+        {
+            Surf_a
+            {
+	        density 2.4e-9;
+            };
+        };
+        value uniform 2.4e-9;
+    }
+
+	inlet
+    {
+	type            zeroGradient;
+    }
+	
+	outlet
+    {
+        type            zeroGradient;
+    }
+
+    frontAndBack
+    {
+        type empty;
+
+    }
+}
+
+// ************************************************************************* //

@@ -1,0 +1,11 @@
+#!/bin/bash
+cd ${0%/*} || exit 1
+
+transport/Allwclean
+reactiveTransport/Allwclean
+multiphase/Allwclean
+multiphaseTransport/Allwclean
+multiphaseReactiveTransport/Allwclean
+incompressible/Allwclean
+heatTransfer/Allwclean
+

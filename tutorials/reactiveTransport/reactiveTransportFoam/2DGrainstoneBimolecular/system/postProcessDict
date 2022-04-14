@@ -1,0 +1,19 @@
+FoamFile
+{
+version     4.0;
+format      ascii;
+class       dictionary;
+location    "system";
+object      postProcessDict;
+}
+
+x1 0;
+x2 0.001;
+
+y1 0;
+y2 0.0005;
+
+z1 -5e-6;
+z2 5e-6;
+
+direction 0;

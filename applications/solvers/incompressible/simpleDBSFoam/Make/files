@@ -1,0 +1,3 @@
+simpleDBSFoam.C
+
+EXE = $(GCFOAM_APPBIN)/simpleDBSFoam

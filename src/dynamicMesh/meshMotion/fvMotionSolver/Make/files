@@ -1,0 +1,3 @@
+pointPatchFields/derived/dissolSolidVelocity/dissolSolidVelocityPointPatchVectorField.C
+
+LIB = $(GCFOAM_LIBBIN)/libfvMotionSolverGCFOAM

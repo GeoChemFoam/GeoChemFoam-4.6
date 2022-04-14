@@ -1,0 +1,8 @@
+#!/bin/bash
+cd ${0%/*} || exit 1
+
+thermophysicalModels/Allwclean
+dynamicMesh/Allwclean
+wclean libso finiteVolume
+wclean libso meshTools
+transportModels/Allwclean

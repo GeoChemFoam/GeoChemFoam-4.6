@@ -1,0 +1,6 @@
+#!/bin/bash
+cd ${0%/*} || exit 1
+
+wclean reactiveTransportFoam
+wclean reactiveTransportALEFoam
+wclean reactiveTransportDBSFoam

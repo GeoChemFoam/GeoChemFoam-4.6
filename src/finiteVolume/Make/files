@@ -1,0 +1,5 @@
+
+cfdTools/general/solutionControl/steadyStateControl/steadyStateControl.C
+fields/fvPatchFields/derived/flowRateInletVelocityExtrapolate/flowRateInletVelocityExtrapolateFvPatchVectorField.C
+
+LIB = $(GCFOAM_LIBBIN)/libfiniteVolumeGCFOAM

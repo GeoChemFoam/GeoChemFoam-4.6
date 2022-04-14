@@ -1,0 +1,15 @@
+#!/bin/bash
+cd ${0%/*} || exit 1
+
+wclean processPoroPerm
+wclean processConcentration
+wclean processSaturation
+wclean processMaxVelocity
+wclean processPhaseConcentration
+wclean processInterfaceTransfer
+wclean processMeshCellCenters
+wclean processPoroSurf
+wclean processSolidArea
+wclean processHeatTransfer
+
+

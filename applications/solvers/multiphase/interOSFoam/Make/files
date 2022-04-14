@@ -1,0 +1,3 @@
+interOSFoam.C
+
+EXE = $(GCFOAM_APPBIN)/interOSFoam

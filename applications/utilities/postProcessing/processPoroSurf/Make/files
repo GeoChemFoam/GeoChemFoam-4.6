@@ -1,0 +1,3 @@
+processPoroSurf.C
+
+EXE = $(GCFOAM_APPBIN)/processPoroSurf

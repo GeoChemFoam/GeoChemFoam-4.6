@@ -1,0 +1,47 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      thermoPhysicalProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solutionSpecies
+{
+   H+ 
+   {
+      D    D  [0 2 -1 0 0 0 0] 5e-9;
+   }
+
+
+}
+
+kineticPhases
+{
+}
+
+kineticPhaseReactions
+{
+  calcite
+  {
+      species
+      {
+          H+
+          {
+              scoeff 2;
+              ki ki [0 1 -1 0 0 0 0] 8.9125e-4;
+          }
+      }
+      k0 k0 [0 -2 -1 0 1 0 0] 0;
+}
+
+// ************************************************************************* //
