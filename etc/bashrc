@@ -7,12 +7,12 @@ GCFOAM_APPBIN=$GCFOAM_DIR/bin
 GCFOAM_LIBBIN=$GCFOAM_DIR/lib
 
 # Change according to your openfoam installation directory
-# export FOAM_INST_DIR=$HOME/foam
-# source $HOME/foam/foam-extend-4.0/etc/bashrc
-# export OF4X_DIR=$HOME/OpenFOAM
-export FOAM_INST_DIR=/usr/local/foam
-source /usr/local/foam/foam-extend-4.0/etc/bashrc
-export OF4X_DIR=/usr/local/OpenFOAM
+export FOAM_INST_DIR=$HOME/foam
+source $HOME/foam/foam-extend-4.0/etc/bashrc
+export OF4X_DIR=$HOME/OpenFOAM
+#export FOAM_INST_DIR=/usr/local/foam
+#source /usr/local/foam/foam-extend-4.0/etc/bashrc
+#export OF4X_DIR=/usr/local/OpenFOAM
 #export FOAM_INST_DIR=/opt/foam
 #source /opt/foam/foam-extend-4.0/etc/bashrc
 #export OF4X_DIR=/opt/OpenFOAM
