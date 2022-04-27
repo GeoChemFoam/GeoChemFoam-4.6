@@ -10,7 +10,3 @@ reconstructPar
 rm -rf 0/polyMesh
 rm -rf processor*
 processSolidArea
-`
-
-
-
