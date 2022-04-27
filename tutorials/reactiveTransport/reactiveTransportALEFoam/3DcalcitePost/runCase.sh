@@ -32,7 +32,7 @@ a=0;
 s=str(a)
 removeOld = 0
 
-for n in range(0,1601,800):
+for n in range(0,4000):
   os.system('cp system/controlDictRun system/controlDict')
   os.system('sed -i "s/var/'+str(n)+'/g" system/controlDict') 
   while a<n:
